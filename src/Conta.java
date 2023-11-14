@@ -1,8 +1,8 @@
 public class Conta extends Produto{
     private float saldo;
 
-    public Conta(String nome, float saldo) {
-        super(nome);
+    public Conta(String nome, Cliente cliente, Banco banco, float saldo) {
+        super(nome, cliente, banco);
         this.saldo = saldo;
     }
 

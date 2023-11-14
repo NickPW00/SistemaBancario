@@ -3,30 +3,34 @@ import java.util.List;
 
 public class Cliente {
     private String nome;
-    private List<Produto> produtos = new ArrayList<>();
-    private List<Banco> bancos = new ArrayList<>();
+    private final List<Produto> produtos = new ArrayList<>();
+    private final List<Banco> bancos = new ArrayList<>();
+
+    public Cliente(String nome) {
+        this.nome = nome;
+    }
 
     public List<Produto> getProdutos() {
         return produtos;
     }
 
-    public void addProdutos(List<Produto> produtos) {
-        this.produtos = produtos.add();
+    public void addProduto(Produto produto) {
+        this.produtos.add(produto);
     }
 
-    public void removeProdutos(List<Produto> produtos) {
-        this.produtos = produtos.remove();
+    public void removeProduto(Produto produto) {
+        this.produtos.remove(produto);
     }
 
     public List<Banco> getBancos() {
         return bancos;
     }
 
-    public void addBancos(List<Banco> bancos) {
-        this.bancos = bancos.add();
+    public void addBanco(Banco banco) {
+        this.bancos.add(banco);
     }
 
-    public void removeBancos(List<Banco> bancos) {
-        this.bancos = bancos.remove();
+    public void removeBanco(Banco banco) {
+        this.bancos.remove(banco);
     }
 }

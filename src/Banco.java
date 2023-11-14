@@ -2,49 +2,51 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Banco {
-    private String nome;
-    private List<Cliente> clientes = new ArrayList<>();
-    private List<Produto> produtos = new ArrayList<>();
-    private List<Agencia> agencias = new ArrayList<>();
+    private final String nome;
+    private final List<Cliente> clientes = new ArrayList<>();
+    private final List<Produto> produtos = new ArrayList<>();
+    private final List<Agencia> agencias = new ArrayList<>();
 
     public Banco(String nome) {
         this.nome = nome;
+    }
+    public String getNome() {
+        return nome;
     }
 
     public List<Cliente> getClientes() {
         return clientes;
     }
 
-    public void addClientes(List<Cliente> clientes) {
-        this.clientes = clientes.add();
-    }
-
-    public void removeClientes(List<Cliente> clientes) {
-        this.clientes = clientes.remove();
-    }
-
     public List<Produto> getProdutos() {
         return produtos;
-    }
-
-    public void addProdutos(List<Produto> produtos) {
-        this.produtos = produtos.add();
-    }
-
-    public void removeProdutos(List<Produto> produtos) {
-        this.produtos = produtos.remove();
     }
 
     public List<Agencia> getAgencias() {
         return agencias;
     }
 
-    public void addAgencias(List<Agencia> agencias) {
-        this.agencias = agencias.add();
+    public void addClientes(Cliente cliente) {
+        this.clientes.add(cliente);
     }
 
-    public void removeAgencias(List<Agencia> agencias) {
-        this.agencias = agencias.remove();
+    public void removeClientes(Cliente cliente) {
+        this.clientes.remove(cliente);
     }
 
+    public void addProdutos(Produto produto) {
+        this.produtos.add(produto);
+    }
+
+    public void removeProdutos(Produto produto) {
+        this.produtos.remove(produto);
+    }
+
+    public void addAgencias(Agencia agencia) {
+        this.agencias.add(agencia);
+    }
+
+    public void removeAgencias(Agencia agencia) {
+        this.agencias.remove(agencia);
+    }
 }
