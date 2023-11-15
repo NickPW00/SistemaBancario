@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente {
-    private String nome;
+    private final String nome;
     private final List<Produto> produtos = new ArrayList<>();
     private final List<Banco> bancos = new ArrayList<>();
 
@@ -10,11 +10,15 @@ public class Cliente {
         this.nome = nome;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     public List<Produto> getProdutos() {
         return produtos;
     }
 
-    public void addProduto(Produto produto) {
+    public void addProdutos(Produto produto) {
         this.produtos.add(produto);
     }
 
