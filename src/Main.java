@@ -5,12 +5,12 @@ public class Main {
         Banco banco1 = new Banco("Banco do Brasil");
         Cliente cliente1 = new Cliente("João");
         Cliente cliente2 = new Cliente("Pedro");
-        Conta conta1 = new Conta("Conta1", cliente1, banco1, 2000, 3000);
-        Conta conta2 = new Conta("Conta2", cliente2, banco1, 2000, 4000);
+        Conta conta1 = new Conta("Conta1", cliente1, banco1, 2000);
+        Conta conta2 = new Conta("Conta2", cliente2, banco1, 2000);
         Cartao cartao1 = new Cartao("1234567-89", "Cartão do Joao", conta1, cliente1, banco1);
 
         cartao1.pagar(200, "debito");
-
+        conta1.liberarCredito(3000);
         conta1.fazerTransferencia(3000, conta2, "credito");
 
         System.out.println("Clientes no banco1:" + banco1.getClientes().stream().count());

@@ -3,14 +3,11 @@ import java.util.Objects;
 public class Conta extends Produto{
     private double saldo;
     private double credito;
+    private boolean isCreditoLiberado = false;
     private final String TIPO_PRODUTO = "CONTA";
-
-
-
-    public Conta(String nome, Cliente cliente, Banco banco, double saldo, double credito) {
+    public Conta(String nome, Cliente cliente, Banco banco, double saldo) {
         super(nome, cliente, banco);
         this.saldo = saldo;
-        this.credito = credito;
         GerenciadorDeIntegracoes.adicionarClientesEmBanco(cliente, banco);
         GerenciadorDeIntegracoes.adicionarProdutos(cliente, banco, this);
     }
@@ -21,7 +18,10 @@ public class Conta extends Produto{
     public void setCredito(double credito) {
         this.credito = credito;
     }
-
+    public void liberarCredito(double valor) {
+        this.isCreditoLiberado = true;
+        this.credito = valor;
+    }
     public double getSaldo() {
         return saldo;
     }
@@ -43,7 +43,7 @@ public class Conta extends Produto{
             }
             else System.out.println("Saldo Indisponivel.");
         }
-        else if("credito".equals(formaDeTransacao))
+        else if("credito".equals(formaDeTransacao) && isCreditoLiberado)
         {
             if (this.credito >= valorDesejado){
                 this.credito -= valorDesejado;
@@ -52,10 +52,15 @@ public class Conta extends Produto{
             }
             else System.out.println("Saldo Indisponivel.");
         }
+        else if (!isCreditoLiberado) System.out.println("Credito não liberado.");
         else if(formaDeTransacao == null) System.out.println("Selecione a forma de pagamento.");
     }
 
     public String getTipo() {
         return TIPO_PRODUTO;
+    }
+
+    public boolean isCreditoLiberado() {
+        return isCreditoLiberado;
     }
 }
